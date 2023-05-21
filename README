@@ -1,0 +1,52 @@
+# University of Warwick: Peter Norris: Mar 2023
+
+# You will find two folders in this archive, one for a database container and one for a webserver container.
+# This README file provides you with the commands to get the web application working in the most basic configuration.
+# in all the following, replace g99 with your specific group ID.
+
+####### Docker Network ############
+
+# So that our containers can talk to each other, we need to create a docker network:
+
+docker network create --subnet=198.51.100.0/24 iss2023/lima_n
+> 8b05589ce0541dbd11d683e5b23bcaaccdd7440aefbb87690d9db3846a74a138
+
+####### DATABASE (MySQL) ###########
+
+# First build the database image from the supplied docker file. 
+# Name your image iss2023/g99-db_i  (but replace g99 with your own group id)
+# (tag as 0.1, 0.2 as well as latest if you feel this to be essential).
+# After building the MYSQL image from the dockerfile you can use the following run-time command to get started:
+
+docker run -d --net iss2023/lima_n --ip 198.51.100.150 --hostname db.iss.cyber23.test -e MYSQL_ROOT_PASSWORD="CorrectHorseBatteryStaple-xkcd" -e MYSQL_DATABASE="iss2023db" --name iss2023-lima-db_c iss2023/lima-db_i
+
+> 6e682e1c4e706ca597dbc49dcc5e36dc75363538ef84ef4cbe7bf9fa42a47130
+
+# After running this command, your mysql container will not be configured with a database.
+# Therefore everytime you start your mysql container you need to run the following command in order to prepare the database:
+
+sudo docker exec -i iss2023-lima-db_c mysql -uroot -pCorrectHorseBatteryStaple-xkcd < sqlconfig/iss2023db.sql
+
+
+# This will create a pre-configured database which can be used by the web application.
+
+# NOTE 1: there should be no space between "-p" and your password (for example -ptest )
+# NOTE 2: You will receive a MYSQL error if you attempt to run the 'docker exec' command too quickly after starting the container with 'docker run'. Wait for a few seconds so that database can get started.
+# HINT: Importing your database everytime you start the container is not efficient... Think how you can make this data persist!
+# NOTE 3: For information on the database image, see the following URL: https://hub.docker.com/_/mariadb
+
+###### WEBSERVER (nginx)
+
+# FIrst build the webserver image from the supplied dockerfile
+# Name your image iss2023/g99-web_i  (but replace g99 with your own group id)
+# After building the NGINX dockerfile you can use the following run-time command to get started:
+
+docker run -d --net iss2023/lima_n --ip 198.51.100.149 --hostname www.iss.cyber23.test --add-host db.iss.cyber23.test:198.51.100.150 -p 8080:80 --name iss2023-lima-web_c iss2023/lima-web_i
+> 71ac8deb258becb8ef69656e8d53c2e800023f692a7e3dd156472dba3a5cfe55
+
+
+# You should now be able to browse to http://localhost:8080/ to view the web application!
+
+# NOTE: If you have issues getting the basic setup working, ask for help!
+
+
