@@ -1,0 +1,3 @@
+Build Script - 
+	- ensure current directory is /home/csc/iss2023-lima/scripts
+	- chmod +x repeated-run-script.sh
