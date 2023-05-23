@@ -3,9 +3,6 @@
 echo 'Ensuring SELinux is installed:'
 sudo yum install selinux-policy-devel
 
-echo 'Ensuring docker is running'
-sudo systemctl start docker
-
 echo 'Ensuring that docker has SELinux enabled:'
 sudo sed -i 's|ExecStart=/usr/bin/dockerd|ExecStart=/usr/bin/dockerd --selinux-enabled|' /usr/lib/systemd/system/docker.service
 
