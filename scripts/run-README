@@ -1,0 +1,7 @@
+ensure current directory is /home/csc/iss2023-lima/scripts
+
+One Time Run Script-
+	- chmod +x one-off-run-script.sh	
+
+Repeated Run Script-
+	- chmod +x repeated-run-script.sh
