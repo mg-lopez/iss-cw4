@@ -25,7 +25,6 @@ allow iss2023-lima-web_c_t self:capability { chown net_bind_service setgid setui
 allow iss2023-lima-web_c_t self:tcp_socket { read write bind create listen setopt accept getattr getopt connect};
 allow iss2023-lima-web_c_t self:udp_socket { connect create getattr setopt};
 allow iss2023-lima-web_c_t mysqld_port_t:tcp_socket name_connect;
-
 ################# end audit2allow additions ##################
 
 
