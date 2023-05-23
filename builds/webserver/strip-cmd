@@ -1,0 +1,40 @@
+#!/bin/bash
+
+./strip-image -v \
+  -i iss2023/lima4-web_i \
+  -p nginx \
+  -p php \
+  -p php-mysqlnd \
+  -p php-fpm \
+  -p yum \
+  -p bash \
+  -d Dockerfile \
+  -t iss2023/lima4-web-stripped_i \
+  -f /bin/sh \
+  -f /docker-entrypoint.sh \
+  -f /etc/passwd \
+  -f /etc/group \
+  -f '/usr/lib/*/libnss*' \
+  -f /usr/lib64 \
+  -f /etc/hosts \
+  -f '/usr/lib/*/libzip*' \
+  -f /var/log/nginx \
+  -f /bin/ls \
+  -f /bin/cat \
+  -f /bin/sh \
+  -f /bin/mkdir \
+  -f /bin/ps \
+  -f /bin/bash \
+  -f /var/run \
+  -f /var/log/nginx \
+  -f /var/log/php-fpm/error.log \
+  -f /var/lib/nginx/tmp/client_body \
+  -f /usr/lib64/php/modules/pdo_mysqlnd.so \
+  -f /var/log/php-fpm \
+  -f /usr/share/nginx/html \
+  -f /usr/bin/chown \
+  -f /usr/bin/chmod \
+  -f /usr/bin/ping \
+  -f /etc/php.ini \
+  -f /etc/php-fpm.d/www.conf \
+
