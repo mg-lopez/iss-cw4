@@ -22,6 +22,7 @@ COPY configfiles/docker-entrypoint.sh /
 RUN rm -f /usr/share/nginx/html/index.html /usr/share/nginx/html/nginx-logo.png /usr/share/nginx/html/poweredby.png
 RUN chmod +x /docker-entrypoint.sh && \
     chown apache:apache /usr/share/nginx/html/*.php
+RUN mkdir /var/lib/nginx/tmp/client_body -p
 
 EXPOSE 80
 
