@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Ensuring docker is running
+sudo systemctl start docker
+
 echo 'Ensuring SELinux is installed:'
 sudo yum install selinux-policy-devel
 
