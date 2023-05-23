@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Ensuring docker is running
+sudo systemctl start docker
+
 # Change directory to 'dbserver'
 cd /home/csc/iss2023-lima/builds/dbserver
 
