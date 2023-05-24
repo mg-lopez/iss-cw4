@@ -2,8 +2,8 @@
 # db server Strip Command
 
 ./strip-image -v \
-	-i iss2023/lima4-db_i \
-	-t iss2023/lima4-db-stripped_i \
+	-i iss2023/lima-db_i \
+	-t iss2023/lima-db-stripped_i \
   -d Dockerfile \
 	-p bash \
 	-p mariadb \
