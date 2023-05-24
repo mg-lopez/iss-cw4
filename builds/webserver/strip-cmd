@@ -1,6 +1,6 @@
 #!/bin/bash
 # Web server Strip Command
-./strip-image -v \
+./strip-image \
   -i iss2023/lima-web_i \
   -p nginx \
   -p php \
