@@ -13,10 +13,8 @@
                 "close",
                 "fcntl",
 		"getpeername",
-		"getsockname",
                 "listen",
                 "recvfrom",
-		"recvmsg",
                 "sendto",
                 "setsockopt",
                 "socket"
@@ -70,7 +68,6 @@
                 "madvise",
                 "mmap",
                 "mprotect",
-		"munmap",
                 "pread64",
                 "pwrite64"
             ],
@@ -87,11 +84,8 @@
                 "prctl",
                 "setgid",
                 "setgroups",
-		"setresgid",
-		"setresuid",
                 "setuid",
 		"set_tid_address"
-
             ],
 	    "comment": "Capability and user-related syscalls"
         },
@@ -103,29 +97,18 @@
                 "rt_sigaction",
                 "rt_sigprocmask",
                 "rt_sigreturn",
-                "rt_sigtimedwait",
-                "sigaltstack"
+                "rt_sigtimedwait"
             ],
 	    "comment": "Signal-related syscalls"
         },
 	{
             "action": "SCMP_ACT_ALLOW",
             "names": [
-		"ioctl",
                 "pipe2",
                 "poll",
-		"umask",
                 "uname"
             ],
 	    "comment": "I/O control and system information syscalls"
-        },
-	{
-            "action": "SCMP_ACT_ALLOW",
-            "names": [
-                "container",
-                "switch"
-            ],
-	    "comment": "Container-related syscalls"
         }
     ]
 }
