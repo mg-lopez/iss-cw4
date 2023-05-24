@@ -1,7 +1,7 @@
 #!/bin/bash
 # Web server Strip Command
-./strip-image \
-  -i iss2023/lima-web_i \
+./strip-image -v \
+  -i iss2023/lima4-web_i \
   -p nginx \
   -p php \
   -p php-mysqlnd \
