@@ -7,39 +7,52 @@
         {
             "action": "SCMP_ACT_ALLOW",
             "names": [
+		"accept",
 		"accept4",
                 "bind",
                 "connect",
                 "close",
                 "fcntl",
-		"getpeername",
+		"getsockname",
+		"getsockopt",
                 "listen",
                 "recvfrom",
+		"recvmsg",
                 "sendto",
+		"sendmsg",
                 "setsockopt",
-                "socket"
+                "socket",
+		"socketpair"
             ],
 	    "comment": "Network-related syscalls"
         },
 	{
             "action": "SCMP_ACT_ALLOW",
             "names": [
-                "access",
                 "chdir",
+		"chown",
+		"creat",
 		"dup2",
-                "faccessat",
+		"eventfd2",
                 "fstat",
                 "fstatfs",
                 "getcwd",
+		"getdents",
                 "getdents64",
+		"lstat",
                 "mkdir",
-                "newfstatat",
+		"open",
                 "openat",
+                "newfstatat",
                 "read",
                 "readlink",
+		"readv",
                 "rename",
-                "unlink",
-		"write"
+		"sendfile",
+		"stat",
+		"statfs",
+		"write",
+		"writev"
             ],
 	    "comment": "File and directory-related syscalls"
         },
@@ -49,10 +62,12 @@
                 "arch_prctl",
                 "clone",
                 "execve",
-                "exit",
-                "kill",
-                "tgkill",
+		"getrlimit",
+		"rseq",
+		"setsid",
                 "vfork",
+		"shutdown",
+                "tgkill",
 		"wait4"
             ],
 	    "comment": "Process-related syscalls"
@@ -61,13 +76,9 @@
             "action": "SCMP_ACT_ALLOW",
             "names": [
                 "brk",
-                "fallocate",
-                "fdatasync",
-                "ftruncate",
-                "lseek",
-                "madvise",
                 "mmap",
                 "mprotect",
+                "lseek",
                 "pread64",
                 "pwrite64"
             ],
@@ -79,36 +90,50 @@
                 "capget",
                 "capset",
                 "getpgrp",
-                "getpid",
                 "getppid",
+		"geteuid",
                 "prctl",
                 "setgid",
                 "setgroups",
-                "setuid",
-		"set_tid_address"
+		"setresgid",
+		"setresuid",
+                "setuid"
             ],
 	    "comment": "Capability and user-related syscalls"
         },
 	{
             "action": "SCMP_ACT_ALLOW",
             "names": [
-                "clock_nanosleep",
                 "futex",
-                "rt_sigaction",
-                "rt_sigprocmask",
-                "rt_sigreturn",
-                "rt_sigtimedwait"
+		"rt_sigpending",
+		"rt_sigaction",
+		"rt_sigprocmask",
+		"rt_sigreturn",
+                "sigaltstack"
             ],
 	    "comment": "Signal-related syscalls"
         },
 	{
             "action": "SCMP_ACT_ALLOW",
             "names": [
+		"epoll_create",
+		"epoll_ctl",
+		"epoll_wait",
+		"ioctl",
+		"io_setup",
                 "pipe2",
                 "poll",
+		"umask",
                 "uname"
             ],
 	    "comment": "I/O control and system information syscalls"
+        },
+	{
+            "action": "SCMP_ACT_ALLOW",
+            "names": [
+                "switch"
+            ],
+	    "comment": "Container-related syscalls"
         }
     ]
 }
