@@ -1,14 +1,10 @@
 FROM scratch
 ADD export_h /
-RUN chown apache:apache /usr/share/nginx/html/*.php
-# Webserver Dockerfile
-
-
-	
-
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+ENTRYPOINT ["docker-entrypoint.sh"]
+CMD ["mysqld"]
+# Database Dockerfile
 
 
 
-EXPOSE 80
-
-ENTRYPOINT ["/docker-entrypoint.sh"]
+EXPOSE 3306
