@@ -10,13 +10,10 @@ docker network create --subnet=198.51.100.0/24 iss2023/lima_n
 cd /home/csc/iss2023-lima/builds/dbserver
 
 # Builds database image from Dockerfile
-sudo docker build -t iss2023/lima-db_i .
+sudo docker build -t iss2023/lima-db-stripped_i .
 
 # Change directory to 'webserver'
 cd /home/csc/iss2023-lima/builds/webserver
 
 # Builds webserver image from Dockerfile
-sudo docker build -t iss2023/lima-web_i .
-
-
-
+sudo docker build -t iss2023/lima-web-stripped_i .
