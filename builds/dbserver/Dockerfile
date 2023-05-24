@@ -1,10 +1,7 @@
-FROM scratch
-ADD export_h /
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["mysqld"]
 # Database Dockerfile
 
+FROM mariadb:10
 
+COPY configfiles/mysqld.cnf  /mysql/mysql.conf.d/mysqld.cnf
 
 EXPOSE 3306
