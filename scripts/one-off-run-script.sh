@@ -17,19 +17,19 @@ docker info | grep -A5 Security
 
 echo 'Compiling the restrive .te SELinux Policy for the Database:'
 cd /home/csc/iss2023-lima/builds/dbserver
-sudo make -f /usr/share/selinux/devel/Makefile iss2023-lima-db_c.pp
+sudo make -f /usr/share/selinux/devel/Makefile docker_dbserver_c.pp
 cd /home/csc/iss2023-lima/builds/dbserver
-sudo semodule -i iss2023-lima-db_c.pp
+sudo semodule -i docker_dbserver_c.pp
 
 
 echo 'Compiling the restrive .te SELinux Policy for the Database:'
 cd /home/csc/iss2023-lima/builds/webserver
-sudo make -f /usr/share/selinux/devel/Makefile iss2023-lima-web_c.pp
+sudo make -f /usr/share/selinux/devel/Makefile docker_webserver_c.pp
 cd /home/csc/iss2023-lima/builds/webserver
-sudo semodule -i iss2023-lima-web_c.pp
+sudo semodule -i docker_webserver_c.pp
 
 echo 'Ensure that SELinux is enforcing:'
 sudo setenforce 1; getenforce
 
 echo 'Verify the policies have implemented correctly:'
-sudo semodule -l | grep iss2023
+sudo semodule -l | grep docker_

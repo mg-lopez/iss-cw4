@@ -1,0 +1,33 @@
+policy_module(docker_webserver_c,2.0)
+
+# Template interface to create docker_webserver_t type so it can be run in the docker container.
+virt_sandbox_domain_template(docker_webserver_c);
+
+################# put audit2allow rules in here ##############
+require {
+	type mysqld_port_t;
+}
+# For nginx
+allow docker_webserver_c_t self:capability { setgid setuid chown };
+allow docker_webserver_c_t self:tcp_socket { create setopt bind listen };
+allow docker_webserver_c_t self:tcp_socket { name_bind };
+allow docker_webserver_c_t self:tcp_socket { accept };
+allow docker_webserver_c_t self:tcp_socket { getattr };
+allow docker_webserver_c_t self:tcp_socket { read };
+
+corenet_tcp_bind_generic_node(docker_webserver_c_t);
+corenet_tcp_bind_http_port(docker_webserver_c_t);
+
+# For php-fpm
+allow docker_webserver_c_t self:tcp_socket { create connect getopt };
+allow docker_webserver_c_t self:tcp_socket { write };
+allow docker_webserver_c_t self:udp_socket { connect create getattr setopt};
+allow docker_webserver_c_t mysqld_port_t:tcp_socket name_connect;
+
+corenet_tcp_bind_generic_node(docker_webserver_c_t);
+corenet_tcp_bind_commplex_main_port(docker_webserver_c_t);
+
+################# end audit2allow additions ##################
+
+# Remove this rule, when you are confident in the policy.
+# permissive docker_webserver_c_t;
