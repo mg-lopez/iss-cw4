@@ -1,7 +1,14 @@
-# Database Dockerfile
+FROM scratch
+ADD export_h /
+RUN chown apache:apache /usr/share/nginx/html/*.php
+# Webserver Dockerfile
 
-FROM mariadb:10
 
-COPY configfiles/mysqld.cnf  /mysql/mysql.conf.d/mysqld.cnf
+	
 
-EXPOSE 3306
+
+
+
+EXPOSE 80
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
