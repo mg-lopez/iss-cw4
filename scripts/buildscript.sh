@@ -15,7 +15,7 @@ sudo docker build -t iss2023/lima-db_i .
 chmod +x strip-image
 chmod +x strip-cmd
 
-sudo strip-cmd
+sudo ./strip-cmd
 
 # Change directory to 'webserver'
 cd /home/csc/iss2023-lima/builds/webserver
@@ -26,4 +26,4 @@ sudo docker build -t iss2023/lima-web_i .
 chmod +x strip-image
 chmod +x strip-cmd
 
-sudo strip-cmd
+sudo ./strip-cmd
