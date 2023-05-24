@@ -1,0 +1,29 @@
+#!/bin/bash
+# Web server Strip Command
+./strip-image -v \
+  -i iss2023/lima-web_i \
+  -p nginx \
+  -p php \
+  -p php-mysqlnd \
+  -p php-fpm \
+  -d Dockerfile \
+  -t iss2023/lima4-web-stripped_i \
+  -f /docker-entrypoint.sh \
+  -f /etc/passwd \
+  -f /etc/group \
+  -f /var/log/nginx \
+  -f /bin/mkdir \
+  -f /var/run \
+  -f /var/log/nginx \
+  -f /var/log/php-fpm/error.log \
+  -f /var/lib/nginx/tmp/client_body \
+  -f /usr/lib64/php/modules/pdo_mysqlnd.so \
+  -f /var/log/php-fpm \
+  -f /usr/share/nginx/html \
+  -f /usr/bin/chown \
+  -f /etc/php.ini \
+  -f /etc/php-fpm.d/www.conf \
+  -f /bin/sh \
+  -f /lib64/libnss_files.so.2\
+  -f /lib64/libnss_sss.so.2\
+
