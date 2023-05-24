@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ./strip-image -v \
-  -i iss2023/lima4-web_i \
+  -i iss2023/lima-web_i \
   -p nginx \
   -p php \
   -p php-mysqlnd \
@@ -9,7 +9,7 @@
   -p yum \
   -p bash \
   -d Dockerfile \
-  -t iss2023/lima4-web-stripped_i \
+  -t iss2023/lima-web-stripped_i \
   -f /bin/sh \
   -f /docker-entrypoint.sh \
   -f /etc/passwd \
